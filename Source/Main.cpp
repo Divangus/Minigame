@@ -356,7 +356,7 @@ void Draw()
 	//DrawRectangle(state.ship_x, state.ship_y, 250, 100, { 255, 0, 0, 255 });
 
 	// Draw ship texture
-	rec.x = state.ship_x; rec.y = state.ship_y; rec.w = 64; rec.h = 64;
+	rec.x = state.ship_x; rec.y = state.ship_y; rec.w = 104; rec.h = 104;
 	SDL_RenderCopy(state.renderer, state.ship, NULL, &rec);
 
 	// L2: DONE 9: Draw active shots
