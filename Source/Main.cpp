@@ -121,7 +121,7 @@ void Start()
 	//if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0) printf("SDL_EVENTS could not be initialized! SDL_Error: %s\n", SDL_GetError());
 
 	// Init window
-	state.window = SDL_CreateWindow("Super Awesome Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	state.window = SDL_CreateWindow("Navecitas Navelín", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	state.surface = SDL_GetWindowSurface(state.window);
 
 	// Init renderer
@@ -417,7 +417,18 @@ void Draw()
 	// Finally present framebuffer
 	SDL_RenderPresent(state.renderer);
 
-	
+	// Colisions
+	bool check_collision(SDL_Rect , SDL_Rect ) {
+		int left1, left2;
+		int top1, top2;
+		int bottom1, bottom2;
+		int right1, right2;
+
+		if (right1 == right2) {
+			return true;
+		}
+
+	}
 }
 
 
