@@ -34,7 +34,7 @@
 #define JOYSTICK_DEAD_ZONE  8000
 
 #define SHIP_SPEED			   8
-#define MAX_SHIP_SHOTS		  2
+#define MAX_SHIP_SHOTS		   2
 #define SHOT1_SPEED			  12
 #define SHOT2_SPEED			 -12
 #define SCROLL_SPEED		   5
@@ -154,7 +154,7 @@ void Start()
 	// EXTRA: Handle the case the sound can not be loaded!
 	Mix_Init(MIX_INIT_OGG);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
-	//state.music = Mix_LoadMUS("Assets/music.ogg");
+	state.music = Mix_LoadMUS("Assets/music.ogg");
 	state.fx_shoot[0] = Mix_LoadWAV("Assets/laser.wav");
 	state.fx_shoot[1] = Mix_LoadWAV("Assets/laser.wav");
 
@@ -416,6 +416,8 @@ void Draw()
 
 	// Finally present framebuffer
 	SDL_RenderPresent(state.renderer);
+
+	
 }
 
 
