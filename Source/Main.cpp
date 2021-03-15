@@ -146,10 +146,13 @@ void Start()
 
 	// L4: TODO 1: Init audio system and load music/fx
 	// EXTRA: Handle the case the sound can not be loaded!
-
+	Mix_Init(MIX_INIT_OGG);
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
+	state.music = Mix_LoadMUS("Assets/music.ogg");
+	state.fx_shoot = Mix_LoadWAV("Assets/laser.wav");
 
 	// L4: TODO 2: Start playing loaded music
-
+	Mix_PlayMusic(state.music, -1);
 
 	// Init game variables
 	state.ship_x = 100;
@@ -162,7 +165,10 @@ void Start()
 void Finish()
 {
 	// L4: TODO 3: Unload music/fx and deinitialize audio system
-
+	Mix_FreeMusic(state.music);
+	Mix_FreeChunk(state.fx_shoot);
+	Mix_CloseAudio();
+	Mix_Quit();
 
 	// Unload textures and deinitialize image system
 	SDL_DestroyTexture(state.background);
@@ -314,7 +320,7 @@ void MoveStuff()
 		state.last_shot++;
 
 		// L4: TODO 4: Play sound fx_shoot
-        
+		Mix_PlayChannel(-1, state.fx_shoot, 0);
 	}
 
 	// Update active shots
