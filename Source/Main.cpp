@@ -34,7 +34,7 @@
 #define JOYSTICK_DEAD_ZONE  8000
 
 #define SHIP_SPEED			   8
-#define MAX_SHIP_SHOTS		   2
+#define MAX_SHIP_SHOTS		  32
 #define SHOT1_SPEED			  12
 #define SHOT2_SPEED			 -12
 #define SCROLL_SPEED		   5
@@ -83,11 +83,12 @@ struct GlobalState
 	SDL_Texture* background;
 	SDL_Texture* ship[2];
 	SDL_Texture* shot[2];
+	SDL_Texture* explosiom;
 	int background_width;
 
 	// Audio variables
 	Mix_Music* music;
-	Mix_Chunk* fx_shoot[2];
+	Mix_Chunk* fx_shoot;
 
 	// Game elements
 	int ship_x1;
@@ -148,6 +149,7 @@ void Start()
 	state.shot[0] = SDL_CreateTextureFromSurface(state.renderer, IMG_Load("Assets/shots.png"));
 	state.ship[1] = SDL_CreateTextureFromSurface(state.renderer, IMG_Load("Assets/ship2.png"));
 	state.shot[1] = SDL_CreateTextureFromSurface(state.renderer, IMG_Load("Assets/shots2.png"));
+	state.explosiom = SDL_CreateTextureFromSurface(state.renderer, IMG_Load("Assets/explosion.png"));
 	SDL_QueryTexture(state.background, NULL, NULL, &state.background_width, NULL);
 
 	// L4: TODO 1: Init audio system and load music/fx
@@ -155,8 +157,7 @@ void Start()
 	Mix_Init(MIX_INIT_OGG);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 	state.music = Mix_LoadMUS("Assets/music.ogg");
-	state.fx_shoot[0] = Mix_LoadWAV("Assets/laser.wav");
-	state.fx_shoot[1] = Mix_LoadWAV("Assets/laser.wav");
+	state.fx_shoot = Mix_LoadWAV("Assets/laser.wav");
 
 	// L4: TODO 2: Start playing loaded music
 	Mix_PlayMusic(state.music, -1);
@@ -176,8 +177,7 @@ void Finish()
 {
 	// L4: TODO 3: Unload music/fx and deinitialize audio system
 	Mix_FreeMusic(state.music);
-	Mix_FreeChunk(state.fx_shoot[0]);
-	Mix_FreeChunk(state.fx_shoot[1]);
+	Mix_FreeChunk(state.fx_shoot);
 	Mix_CloseAudio();
 	Mix_Quit();
 
@@ -185,6 +185,7 @@ void Finish()
 	SDL_DestroyTexture(state.background);
 	SDL_DestroyTexture(state.ship[0]);
 	SDL_DestroyTexture(state.ship[1]);
+	SDL_DestroyTexture(state.explosiom);
 	IMG_Quit();
 
 	// L2: DONE 3: Close game controller
@@ -338,7 +339,7 @@ void MoveStuff()
 		state.last_shot[0]++;
 
 		// L4: TODO 4: Play sound fx_shoot
-		Mix_PlayChannel(-1, state.fx_shoot[0], 0);
+		Mix_PlayChannel(-1, state.fx_shoot, 0);
 	}
 	if (state.keyboard[SDL_SCANCODE_L] == KEY_DOWN)
 	{
@@ -350,7 +351,7 @@ void MoveStuff()
 		state.last_shot[1]++;
 
 		// L4: TODO 4: Play sound fx_shoot
-		Mix_PlayChannel(-1, state.fx_shoot[1], 0);
+		Mix_PlayChannel(-1, state.fx_shoot, 0);
 	}
 
 	// Update active shots
@@ -413,43 +414,12 @@ void Draw()
 			SDL_RenderCopy(state.renderer, state.shot[1], NULL, &rec);
 		}
 	}
-
+	
 	// Finally present framebuffer
 	SDL_RenderPresent(state.renderer);
 
-	// Colisions
-	// Enter variable for the collisions between rects
+	//Collisions
 
-	bool check_collision(SDL_Rect , SDL_Rect ) {
-		int left1, left2;
-		int top1, top2;
-		int bottom1, bottom2;
-		int right1, right2;
-
-		left1=
-		left2=
-		top1=
-		top2=
-		bottom1=
-		bottom2=
-		right1=
-		right2=
-
-		if (right1 >= left2) {
-			return true;
-		}
-		else if (left1 <= right2) {
-			return true;
-		}
-		else if (top1 >= bottom2) {
-			return true;
-		}
-		else if (bottom1 <= top2) {
-			return true;
-		}
-		else
-			return false;
-	}
 }
 
 
@@ -515,3 +485,4 @@ void DrawCircle(int x, int y, int radius, SDL_Color color)
 
 	if (result != 0) printf("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
 }
+
