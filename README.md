@@ -12,13 +12,13 @@ This is a 1vs1 spaceship minigame
 ## Controls
 
  - Player 1:
-  - Move up: W
-  - Move down: S
-  - Shot: F
+   - Move up: W
+   - Move down: S
+   - Shot: F
  - Player 2:
-  - Move up: UP
-  - Move down: DOWN
-  - Shot: L  
+   - Move up: UP
+   - Move down: DOWN
+   - Shot: L  
 
 ## Developers
 
