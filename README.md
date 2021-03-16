@@ -1,29 +1,33 @@
-# {Project Name}
+# Minigame
 
 ## Description
 
-{project description}
+This is a 1vs1 spaceship minigame
 
 ## Key Features
 
- - {Feature01}
- - {Feature02}
- - {Feature03}
- - {Feature04}
+ - Local multiplayer (only 2)
+ - Control with the same keyboard
  
 ## Controls
 
- - {ControlsScheme}
+ - Player 1:
+  - Move up: W
+  - Move down: S
+  - Shot: F
+ - Player 2:
+  - Move up: UP
+  - Move down: DOWN
+  - Shot: L  
 
 ## Developers
 
- - {Dev01} - {Role(s)}
- - {Dev02} - {Role(s)}
- - {Dev03} - {Role(s)}
- - {Dev04} - {Role(s)}
+ - Joan Castellvi - Programmer
+ - Marina Albalà - Art
+ - Albert Martín - Audio
+ - David Benages - Manager
 
 ## License
 
 This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](LICENSE) for further details.
 
-{AdditionalLicenses}
