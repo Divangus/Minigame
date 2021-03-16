@@ -418,16 +418,37 @@ void Draw()
 	SDL_RenderPresent(state.renderer);
 
 	// Colisions
+	// Enter variable for the collisions between rects
+
 	bool check_collision(SDL_Rect , SDL_Rect ) {
 		int left1, left2;
 		int top1, top2;
 		int bottom1, bottom2;
 		int right1, right2;
 
-		if (right1 == right2) {
+		left1=
+		left2=
+		top1=
+		top2=
+		bottom1=
+		bottom2=
+		right1=
+		right2=
+
+		if (right1 >= left2) {
 			return true;
 		}
-
+		else if (left1 <= right2) {
+			return true;
+		}
+		else if (top1 >= bottom2) {
+			return true;
+		}
+		else if (bottom1 <= top2) {
+			return true;
+		}
+		else
+			return false;
 	}
 }
 
