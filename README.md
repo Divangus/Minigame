@@ -1,4 +1,4 @@
-# Minigame
+# Navesitas Navelin
 
 ## Description
 
@@ -22,10 +22,11 @@ This is a 1vs1 spaceship minigame
 
 ## Developers
 
+ - David Benages - Lead
  - Joan Castellvi - Programmer
  - Marina Albalà - Art
  - Albert Martín - Audio
- - David Benages - Manager
+ 
 
 ## License
 
